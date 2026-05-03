@@ -24,3 +24,13 @@ python3 -m venv .venv
 ```bash
 .venv/bin/uvicorn app.main:app --reload
 ```
+
+## Some pictures
+
+### All songs
+
+![songs](/images/songs.png)
+
+### A playlist
+
+![playlist](/images/playlist.png)
