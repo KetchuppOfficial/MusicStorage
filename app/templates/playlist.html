@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="/songs-ui">← Back to songs</a>
+
+<hr>
+
+<h2>Playlist: {{ playlist.name }}</h2>
+
+<div style="margin-top: 5px;">
+    <form method="post" action="/playlists/{{ playlist.id }}/delete"
+        onsubmit="return confirm('Are you sure you want to delete this playlist?');">
+
+        <button type="submit" style="color:red;">
+            Delete
+        </button>
+
+    </form>
+</div>
+
+<hr>
+
+{% if playlist.songs and playlist.songs|length > 0 %}
+    {% for song in playlist.songs %}
+        <div style="margin-bottom: 25px;">
+
+            <b>{{ song.title }}</b> — {{ song.artist.name }}
+
+            {% if song.genre %}
+                ({{ song.genre }})
+            {% endif %}
+
+            <br><br>
+
+            <audio controls>
+                <source src="/{{ song.file_path.replace('app/', '') }}" type="audio/mpeg">
+            </audio>
+
+        </div>
+
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>Playlist is empty</p>
+{% endif %}
+
+{% endblock %}
