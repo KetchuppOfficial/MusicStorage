@@ -123,7 +123,7 @@ async function loadRecommendations() {
         const container = document.getElementById("recommendations");
 
         if (!data.songs.length) {
-            container.innerHTML = "<p>Пока нет рекомендаций</p>";
+            container.innerHTML = "<p>No recommendations yet</p>";
             return;
         }
 
@@ -141,7 +141,7 @@ async function loadRecommendations() {
         `).join("");
     } catch (e) {
         document.getElementById("recommendations").innerText =
-            "Ошибка загрузки рекомендаций";
+            "Error occurred while loading recommendations";
     }
 }
 
